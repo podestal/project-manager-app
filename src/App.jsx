@@ -1,4 +1,5 @@
 import Register from "./components/Register"
+import Login from "./components/Login"
 
 const App = () => {
 
@@ -6,7 +7,7 @@ const App = () => {
   return (
     <>
       <h1>Project Manager App</h1>
-      <Register />
+      <Login />
     </>
   )
 }
