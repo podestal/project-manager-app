@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
 import { getTasks } from "../api/axios"
 import useUser from "../hooks/useUser"
 import { useQuery } from "@tanstack/react-query"
+import Task from "./Task"
+import TaskForm from "./TaskForm"
 
 const Tasks = () => {
 
@@ -20,11 +21,13 @@ const Tasks = () => {
 
     return (
         <div>
+
+            <TaskForm />
             {tasks && tasks.data.map(task => (
-                <div key={task.id}>
-                    <h3>{task.title}</h3>
-                    <p>{task.status}</p>
-                </div>
+                <Task 
+                    key={task.id}
+                    task={task}
+                />
             ))}
         </div>
     )

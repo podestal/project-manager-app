@@ -81,4 +81,10 @@ export const getTasks = async(accessToken, projectId) => {
     })
 }
 
+export const createTask = async(accessToken, projectId, task) => {
+    return baseAxios.post(`${PROJECTS_URL}${projectId}${TASKS_URL}`, task, {
+        headers: {Authorization: `JWT ${accessToken}`}
+    })
+}
+
 export default baseAxios

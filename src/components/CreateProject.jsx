@@ -19,9 +19,9 @@ const CreateProject = () => {
     const handleCreate = e => {
         e.preventDefault()
         createMutation()
-        setTitle("")
-        setSlug("")
-        setDescription("")
+        // setTitle("")
+        // setSlug("")
+        // setDescription("")
     }
 
     return (
