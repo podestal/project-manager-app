@@ -12,16 +12,16 @@ const CreateProject = () => {
     const [description, setDescription] = useState("")
 
     const {mutate: createMutation, error} = useMutation({
-        mutationFn: () => createProject(user.accessToken, {title, slug, description}),
+        mutationFn: (data) => createProject(data),
         onSuccess: () => queryClient.invalidateQueries({queryKey: ["projects"]})
     })
 
     const handleCreate = e => {
         e.preventDefault()
-        createMutation()
-        // setTitle("")
-        // setSlug("")
-        // setDescription("")
+        createMutation({ accessToken: user.accessToken, project: {title, slug, description} })
+        setTitle("")
+        setSlug("")
+        setDescription("")
     }
 
     return (

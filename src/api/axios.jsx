@@ -57,9 +57,9 @@ export const getProject = async (accessToken, id) => {
     })
 }
 
-export const createProject = async (accessToken, project) => {
-    return baseAxios.post(`${PROJECTS_URL}`, project, {
-        headers: {Authorization: `JWT ${accessToken}`}
+export const createProject = async (data) => {
+    return baseAxios.post(`${PROJECTS_URL}`, data.project, {
+        headers: {Authorization: `JWT ${data.accessToken}`}
     })
 }
 
@@ -81,9 +81,21 @@ export const getTasks = async(accessToken, projectId) => {
     })
 }
 
-export const createTask = async(accessToken, projectId, task) => {
-    return baseAxios.post(`${PROJECTS_URL}${projectId}${TASKS_URL}`, task, {
-        headers: {Authorization: `JWT ${accessToken}`}
+export const createTask = async(data) => {
+    return baseAxios.post(`${PROJECTS_URL}${data.projectId}${TASKS_URL}`, data.task, {
+        headers: {Authorization: `JWT ${data.accessToken}`}
+    })
+}
+
+export const editTask = async(data) => {
+    return baseAxios.put(`${PROJECTS_URL}${data.projectId}${TASKS_URL}${data.taskId}/`, data.task, {
+        headers: {Authorization: `JWT ${data.accessToken}`}
+    })
+}
+
+export const deleteTask = async(data) => {
+    return baseAxios.delete(`${PROJECTS_URL}${data.projectId}${TASKS_URL}${data.taskId}/`, {
+        headers: {Authorization: `JWT ${data.accessToken}`}
     })
 }
 

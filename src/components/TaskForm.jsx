@@ -11,13 +11,14 @@ const TaskForm = () => {
     const queryClient = useQueryClient()
 
     const {mutate: createMutation} = useMutation({
-        mutationFn: () => createTask(user.accessToken, id, {title}),
+        mutationFn: (data) => createTask(data),
         onSuccess: () => queryClient.invalidateQueries({queryKey: ["tasks"]}),
     })
 
     const handleSubmit = e => {
         e.preventDefault()
-        createMutation()
+        createMutation({projectId: id, accessToken: user.accessToken, task: {title}})
+        setTitle("")
     }
 
     return (
