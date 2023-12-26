@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react"
 import {getTokens, getUser} from "../api/axios"
 import UserContext from "../context/UserProvider"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 
 const Login = () => {
 
@@ -9,6 +10,9 @@ const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+
+    const navigate = useNavigate()
+    const from = location?.state?.from?.pathname || '/'
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -19,10 +23,12 @@ const Login = () => {
     
             const userResponse = await getUser(accessToken)
             const {id, email } = userResponse.data
+            window.localStorage.setItem("refreshToken", JSON.stringify(refreshToken))
             setUser({ id, email, username, accessToken, refreshToken})
             setError("")
             setUsername("")
             setPassword("")
+            navigate(from, { replace: true })
         } catch (err) {
             setError(err.message)
         }
@@ -51,6 +57,8 @@ const Login = () => {
                 />
                 <button>Login</button>
             </form> 
+            <span>Does not have an account? </span>
+            <Link to={'/register'}>Signup</Link>
         </div>
     )
 }

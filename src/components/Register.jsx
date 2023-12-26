@@ -1,7 +1,7 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import axios from "../api/axios"
-
-const CREATE_USE_URL = '/auth/users/'
+import { createUser } from "../api/axios"
 
 const Register = () => {
 
@@ -10,17 +10,17 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [verifyPwd, setVerifyPwd] = useState("")
     const [error, setError] = useState("")
+    const [success, setSuccess] = useState("")
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         if (password === verifyPwd) {
-            axios.post(CREATE_USE_URL, ({
-                username,
-                email,
-                password
-            }))
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
+            try {
+                await createUser(username, email, password)
+                setSuccess("You are successfully registered")
+            } catch (err) {
+                setError(err.message)
+            }
             setUsername("")
             setEmail("")
             setPassword("")
@@ -34,7 +34,7 @@ const Register = () => {
     return (
         <div>
             <h2>Register</h2>
-            {error && <p>{error}</p>}
+            {error ? <p>{error}</p> : <p>{success}</p>}
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text"
@@ -62,6 +62,8 @@ const Register = () => {
                 />
                 <button type="submit">Register</button>
             </form>
+            <span>Already have an account</span>
+            <Link to={'/login'}>Login</Link>
         </div>
     )
 }
