@@ -6,6 +6,7 @@ import Header from "./components/Header"
 import RequireAuth from "./components/RequireAuth"
 import PersistLogin from "./components/PersistLogin"
 import { Routes, Route } from "react-router-dom"
+import Project from "./components/Project"
 
 const App = () => {
 
@@ -22,6 +23,7 @@ const App = () => {
           <Route element={<RequireAuth />}>
             <Route path="" element={<Dashboard />}/>
             <Route path="profile" element={<Profile />}/>
+            <Route path="project/:id" element={<Project />} />
           </Route>
         </Route>
       </Routes>
