@@ -3,6 +3,7 @@ import { getProject, editProject} from "../api/axios"
 import { useQuery, useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import EditProject from "./EditProject"
+import Tasks from "./Tasks"
 
 const Project = () => {
 
@@ -36,9 +37,10 @@ const Project = () => {
                 <h3>{project.data.title}</h3>
                 <p>{project.data.description}</p>
                 <button onClick={() => setEdit(prev => !prev)}>Edit</button>
-                <button>Delete</button>
             </div>}
-
+            <Tasks 
+                id={project.data.id}
+            />
         </div>
     )
 }

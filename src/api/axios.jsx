@@ -6,6 +6,7 @@ const USER_URL = '/auth/users/me'
 const CREATE_USE_URL = '/auth/users/'
 const REFRESH_TOKEN_URL = '/auth/jwt/refresh/'
 const PROJECTS_URL = '/api/projects/'
+const TASKS_URL = '/tasks/'
 
 
 const baseAxios = axios.create({
@@ -70,6 +71,12 @@ export const editProject = async (accessToken, id, project) => {
 
 export const deleteProject = async(accessToken, id) => {
     return baseAxios.delete(`${PROJECTS_URL}${id}/`, {
+        headers: {Authorization: `JWT ${accessToken}`}
+    })
+}
+
+export const getTasks = async(accessToken, projectId) => {
+    return baseAxios.get(`${PROJECTS_URL}${projectId}${TASKS_URL}`, {
         headers: {Authorization: `JWT ${accessToken}`}
     })
 }

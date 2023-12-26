@@ -19,15 +19,9 @@ const CreateProject = () => {
     const handleCreate = e => {
         e.preventDefault()
         createMutation()
-        // console.log(user.accessToken);
-        // console.log({ title, slug, description, user: user.id});
-        // try {
-        //     
-        // } catch (err) {
-        //     console.log(err)
-        // }
-
-        // await createProject(user.accessToken, {title, slug, description })
+        setTitle("")
+        setSlug("")
+        setDescription("")
     }
 
     return (
