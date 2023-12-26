@@ -8,6 +8,8 @@ const Profile = () => {
     const {user} = useContext(UserContext)
     const privateInterceptors = usePrivateInterceptors()
 
+    
+
     return (
         <div>
             <h1>Profile</h1>
@@ -17,7 +19,6 @@ const Profile = () => {
                     <p>Email: {user.email}</p>
                     <p>Id: {user.id}</p>
                 </div>}
-            {console.log("user", user)}
         </div>
     )
 }
