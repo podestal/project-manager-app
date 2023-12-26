@@ -8,7 +8,6 @@ const CreateProject = () => {
     const queryClient = useQueryClient()
     const { user } = useUser()
     const [title, setTitle] = useState("")
-    const [slug, setSlug] = useState("")
     const [description, setDescription] = useState("")
 
     const {mutate: createMutation, error} = useMutation({
@@ -18,9 +17,8 @@ const CreateProject = () => {
 
     const handleCreate = e => {
         e.preventDefault()
-        createMutation({ accessToken: user.accessToken, project: {title, slug, description} })
+        createMutation({ accessToken: user.accessToken, project: {title, description} })
         setTitle("")
-        setSlug("")
         setDescription("")
     }
 
@@ -31,13 +29,6 @@ const CreateProject = () => {
                 placeholder="Title"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
-            />
-            <br />
-            <input 
-                type="text"
-                placeholder="Slug"
-                value={slug}
-                onChange={e => setSlug(e.target.value)}
             />
             <br />
             <input 
