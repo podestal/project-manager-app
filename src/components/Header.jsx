@@ -11,7 +11,7 @@ const Header = () => {
 
     const handleLogout = () => {
         window.localStorage.removeItem("refreshToken")
-        setUser({})
+        setUser()
         navigate('/login')
     }
 

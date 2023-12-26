@@ -7,7 +7,7 @@ const RequireAuth = () => {
     const { user } = useContext(UserContext)
 
     return (
-        user?.accessToken
+        user
         ? <Outlet />
         : <Navigate to={'/login'}/>
     )
