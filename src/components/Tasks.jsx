@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import Task from "./Task"
 import TaskForm from "./TaskForm"
 import "./styles.css"
+import { useState } from "react"
 
 const Tasks = () => {
 
@@ -92,12 +93,17 @@ const Tasks = () => {
         <div>
             <TaskForm />
             <div className="tasks">
-                <div>
+                <div 
+                    className="task"
+                    onDragOver={handleDragOver}
+                    onDrop={handleOnDropNotStarted}
+                    >
                     <h3>Not Started</h3>
                     {tasks.data.filter(task => task.status == "N")
                     .map(task => (
                         <div
-                            className='not-started'
+                            key={task.id}
+                            className='not-started task-container'
                             draggable
                             onDragStart={e => handleOnDragNotStarted(e, task)}
                             onDrop={handleOnDropNotStarted}
@@ -106,16 +112,22 @@ const Tasks = () => {
                             <Task 
                                 key={task.id}
                                 task={task}
-                            />
+                            /> 
+
                         </div>
                     ))}
                 </div>
-                <div>
+                <div 
+                className="task"
+                onDragOver={handleDragOver}
+                onDrop={handleOnDropInProgress}
+                >
                     <h3>In Progress</h3>
                     {tasks.data.filter(task => task.status == "P")
                     .map(task => (
                         <div
-                            className='in-progress'
+                            key={task.id}
+                            className='in-progress task-container'
                             draggable
                             onDragStart={e => handleOnDragInProgress(e, task)}
                             onDrop={handleOnDropInProgress}
@@ -128,12 +140,17 @@ const Tasks = () => {
                         </div>
                     ))}
                 </div>
-                <div>
+                <div 
+                className="task"
+                onDrop={handleOnDropInRevision}
+                onDragOver={handleDragOver}
+                > 
                     <h3>In Revision</h3>
                     {tasks.data.filter(task => task.status == "R")
                     .map(task => (
                         <div
-                            className='in-revision'
+                            key={task.id}
+                            className='in-revision task-container'
                             draggable
                             onDragStart={e => handleOnDragInRevision(e, task)}
                             onDrop={handleOnDropInRevision}
@@ -146,17 +163,22 @@ const Tasks = () => {
                         </div>
                     ))}
                 </div>
-                <div>
+                <div 
+                className="task"
+                onDrop={handleOnDropCompleted}
+                onDragOver={handleDragOver}
+                >
                     <h3>Completed</h3>
                     {tasks.data.filter(task => task.status == "C")
                     .map(task => (
                         <div
-                            className='completed'
+                            key={task.id}
+                            className='completed task-container'
                             draggable
                             onDragStart={e => handleOnDragCompleted(e, task)}
                             onDrop={handleOnDropCompleted}
                             onDragOver={handleDragOver}
-                        >
+                        >                           
                             <Task 
                                 key={task.id}
                                 task={task}

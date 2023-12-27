@@ -1,4 +1,19 @@
 .tasks {
     display: flex;
     justify-content: space-around;
+    background-color: aqua;
+    height: 100vh;
+}
+
+.task {
+    height: 200px;
+    width: 200px;
+    background-color: beige;
+}
+
+
+.task-container {
+    height: 200px;
+    width: 200px;
+    background-color:azure
 }
