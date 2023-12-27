@@ -12,7 +12,7 @@ const App = () => {
 
 
   return (
-    <>
+    <div className="main">
       <Header />
       <Routes>
         {/* Free routes */}
@@ -27,7 +27,7 @@ const App = () => {
           </Route>
         </Route>
       </Routes>
-    </>
+    </div>
   )
 }
 

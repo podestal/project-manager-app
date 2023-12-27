@@ -98,7 +98,7 @@ const Tasks = () => {
                     onDragOver={handleDragOver}
                     onDrop={handleOnDropNotStarted}
                     >
-                    <h3>Not Started</h3>
+                    <h3 className="status not-started">Not Started</h3>
                     {tasks.data.filter(task => task.status == "N")
                     .map(task => (
                         <div
@@ -122,7 +122,7 @@ const Tasks = () => {
                 onDragOver={handleDragOver}
                 onDrop={handleOnDropInProgress}
                 >
-                    <h3>In Progress</h3>
+                    <h3 className="status in-progress">In Progress</h3>
                     {tasks.data.filter(task => task.status == "P")
                     .map(task => (
                         <div
@@ -145,7 +145,7 @@ const Tasks = () => {
                 onDrop={handleOnDropInRevision}
                 onDragOver={handleDragOver}
                 > 
-                    <h3>In Revision</h3>
+                    <h3 className="status in-revision">In Revision</h3>
                     {tasks.data.filter(task => task.status == "R")
                     .map(task => (
                         <div
@@ -168,7 +168,7 @@ const Tasks = () => {
                 onDrop={handleOnDropCompleted}
                 onDragOver={handleDragOver}
                 >
-                    <h3>Completed</h3>
+                    <h3 className="status completed">Completed</h3>
                     {tasks.data.filter(task => task.status == "C")
                     .map(task => (
                         <div

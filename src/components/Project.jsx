@@ -33,8 +33,7 @@ const Project = () => {
             />
             :             
             <div>
-                <h3>{project.data.title}</h3>
-                <p>{project.data.description}</p>
+                <h3 className="project-title">{project.data.title}</h3>
                 <button onClick={() => setEdit(prev => !prev)}>Edit</button>
             </div>}
             <Tasks 

@@ -31,32 +31,25 @@ const Task = ({ task }) => {
     }
 
     return (
-        <>  
-            {task.title ?
-                <div>
-                    {edit 
-                    ? <form onSubmit={handleEdit}>
-                        <input 
-                            type="text"
-                            value={title}
-                            onChange={e => setTitle(e.target.value)}
-                        />
-                        <br />
-                        <button>Update</button>
-                    </form>
-                    : <div
-
-                    >
-                        <h3>{task.title}</h3>
-                        <p>{task.status}</p>
-                        <button onClick={() => setEdit(prev => !prev)}>Edit</button>
-                        <button onClick={handleDelete}>Delete</button>
-                    </div> 
-                    }
-                </div> :
-                <p>Drop here</p>
-            }                   
-        </>
+        <div>  
+            {edit 
+            ? <form onSubmit={handleEdit}>
+                <input 
+                    type="text"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                />
+                <br />
+                <button>Update</button>
+            </form>
+            : 
+            <div className="task-unit">
+                <h3>{task.title}</h3>
+                <button onClick={() => setEdit(prev => !prev)}>Edit</button>
+                <button onClick={handleDelete}>Delete</button>
+            </div> 
+            }       
+        </div>
     )
 }
 

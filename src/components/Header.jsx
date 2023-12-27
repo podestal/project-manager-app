@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom"
-import { useContext, useState } from "react"
-import UserContext from "../context/UserProvider"
 import { useNavigate } from "react-router-dom"
 import useUser from "../hooks/useUser"
 
@@ -17,21 +15,23 @@ const Header = () => {
     }
 
     return (
-        <div>
+        <header>
             {user ? 
-                <div>
+                <div className="header-container">
                     <Link to='/'>Dashboard</Link>
                     <Link to='/profile'>Profile</Link>
-                    <button onClick={() => handleLogout()}>Logout</button>
+                    <div>
+                        <button onClick={() => handleLogout()}>Logout</button>
+                    </div>
                 </div>
                 :
-                <div>
+                <div className="header-container">
                     <Link to='/login'>Login</Link>
                     <Link to='/register'>Register</Link>
                 </div>
             }
 
-        </div>
+        </header>
     )
 }
 
