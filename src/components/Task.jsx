@@ -17,7 +17,7 @@ const Task = ({ task }) => {
 
     const { mutate: deleteMutation} = useMutation({
         mutationFn: (data) => deleteTask(data),
-        onSuccess: queryClient.invalidateQueries({queryKey: ["tasks"]})
+        onSuccess: () => queryClient.invalidateQueries({queryKey: ["tasks"]})
     })
 
     const handleEdit = e => {
@@ -42,7 +42,9 @@ const Task = ({ task }) => {
                 <br />
                 <button>Update</button>
               </form>
-            : <div>
+            : <div
+
+               >
                 <h3>{task.title}</h3>
                 <p>{task.status}</p>
                 <button onClick={() => setEdit(prev => !prev)}>Edit</button>

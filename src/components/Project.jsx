@@ -9,7 +9,6 @@ const Project = () => {
 
     const id = window.location.href.split('/')[window.location.href.split('/').length - 1]
     const { user } = useUser()
-    console.log(user.accessToken);
     const { data: project, isLoading, isError, error, isSuccess } = useQuery({
         queryKey: ["project"],
         queryFn: () => getProject(user.accessToken, id)
