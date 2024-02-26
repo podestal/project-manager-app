@@ -1,6 +1,7 @@
 import axios from "axios"
 
 const BASE_URL = "http://127.0.0.1:8000"
+const PROD_BASE_URL = 'http://44.206.246.99:8000'
 const LOGIN_URL = '/auth/jwt/create/'
 const USER_URL = '/auth/users/me'
 const CREATE_USE_URL = '/auth/users/'
@@ -10,11 +11,11 @@ const TASKS_URL = '/tasks/'
 
 
 const baseAxios = axios.create({
-    baseURL: BASE_URL
+    baseURL: PROD_BASE_URL
 })
 
 export const privateAxios = axios.create({
-    baseURL: BASE_URL,
+    baseURL: PROD_BASE_URL,
     headers: {'Content-Type': 'application/json'}
 })
 

@@ -91,7 +91,8 @@ const Tasks = () => {
 
     return (
         <div>
-            <TaskForm />
+        <TaskForm />
+        <div className="tasks-container">
             <div className="tasks">
                 <div 
                     className="task"
@@ -164,7 +165,7 @@ const Tasks = () => {
                     ))}
                 </div>
                 <div 
-                className="task"
+                className="task task-completed"
                 onDrop={handleOnDropCompleted}
                 onDragOver={handleDragOver}
                 >
@@ -173,7 +174,7 @@ const Tasks = () => {
                     .map(task => (
                         <div
                             key={task.id}
-                            className='completed task-container'
+                            className='completed task-container-completed'
                             draggable
                             onDragStart={e => handleOnDragCompleted(e, task)}
                             onDrop={handleOnDropCompleted}
@@ -187,6 +188,7 @@ const Tasks = () => {
                     ))}
                 </div>
             </div>
+        </div>
         </div>
     )
 }

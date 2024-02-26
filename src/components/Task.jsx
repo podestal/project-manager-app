@@ -31,7 +31,7 @@ const Task = ({ task }) => {
     }
 
     return (
-        <div>  
+        <>  
             {edit 
             ? <form onSubmit={handleEdit}>
                 <input 
@@ -43,13 +43,14 @@ const Task = ({ task }) => {
                 <button>Update</button>
             </form>
             : 
-            <div className="task-unit">
+            <div className={task.status == 'C' ? "task-unit-completed" : "task-unit"}>
+                {console.log(task.status)}
                 <h3>{task.title}</h3>
                 <button onClick={() => setEdit(prev => !prev)}>Edit</button>
                 <button onClick={handleDelete}>Delete</button>
             </div> 
             }       
-        </div>
+        </>
     )
 }
 

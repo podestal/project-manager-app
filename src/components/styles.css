@@ -5,10 +5,10 @@
 }
 
 body {
-    background-color: #21D4FD;
-    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);   
+    background-color: #000;
+    /* background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);    */
     height: 100vh; 
-    color: #000814;
+    color: #f1faee;
     font-family: sans-serif;
 }
 
@@ -16,7 +16,13 @@ button {
     border: none;
     border-radius: 15%;
     margin: 5px;
-    padding: 5px
+    padding: 0 5px;
+    height: 2rem;
+}
+
+a {
+    color: #f1faee;
+    text-decoration: none;
 }
 
 .header-container {
@@ -42,11 +48,27 @@ button {
     font-weight: bold;
 }
 
+.project-title-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 15px;
+}
+
+.project-title-container .project-title {
+    color: #f1faee;
+    font-size: 3rem;
+}
+
+.tasks-container {
+    width: 90%;
+    margin: auto;
+}
+
 .tasks {
     display: flex;
     justify-content: space-between;
     text-align: center;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     margin: 1.2rem;
 }
@@ -73,13 +95,24 @@ button {
 }
 
 .task {
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    width: 20%;
+    align-items: center;
+    width: 30%;
+}
+
+.task h3 {
+    width: 80%;
 }
 
 .task-container {
-    margin: 50px;
+    margin-top: 40px;
     align-items: center;
+}
+
+.task-container-completed {
+    margin-top: 15px;
 }
 
 .task-unit {
@@ -87,6 +120,7 @@ button {
     color: #f1faee;
     padding: 15px;
     border-radius: 15px;
+    width: 18rem;
 }
 
 .task-unit h3 {
@@ -98,6 +132,26 @@ button {
     border-radius: 15%;
     margin: 5px;
     padding: 5px
+}
+
+.task-unit-completed {
+    background-color: #000814;
+    color: #f1faee;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0;
+    width: 300px;
+    font-size: 0.7rem;
+    font-weight: normal;
+    margin: 0;
+}
+
+.task-unit-completed button {
+    padding: 0 0.6rem;
+    height: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
 }
 
 /* .task {

@@ -32,7 +32,7 @@ const Project = () => {
                 setEdit={setEdit}
             />
             :             
-            <div>
+            <div className="project-title-container">
                 <h3 className="project-title">{project.data.title}</h3>
                 <button onClick={() => setEdit(prev => !prev)}>Edit</button>
             </div>}
